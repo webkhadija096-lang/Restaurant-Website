@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delicious Bites Restaurant</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- <style>
+        /* Animated background canvas */
+        #bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1; /* behind everything */
+            pointer-events: none; /* clicks pass through */
+        }
+    </style> -->
+</head>
+<body>
+    <!-- Animated Background Canvas -->
+    <canvas id="bg-animation"></canvas>
+
+    <!-- Navbar -->
+    <nav>
+        <div class="logo">Delicious Bites</div>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#reservations">Reservations</a></li>
+            <li><a href="#blog">Blog</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+       <button class="btn-reserve" onclick="document.getElementById('reservations').scrollIntoView({behavior: 'smooth'});">
+            Reserve
+       </button>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Savor the Taste of Authentic Chinese Cuisine!</h1>
+            <p>Dive into our signature Fried Rice with Chicken Manchurian, made fresh daily. Order online or book your table now!</p>
+            <div class="hero-buttons">
+                <a href="#menu" class="btn">Order Online</a>
+                <a href="#reservations" class="btn">Reserve Table</a>
+            </div>
+            <div class="promo-banner">
+                This Week Only: 20% Off on All Combo Meals!
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="menu">
+        <h2>Our Delicious Menu</h2>
+        <div class="menu-categories">
+            <!-- Dish 1 -->
+            <div class="dish-card">
+                <div class="dish-img">
+                    <img src="pictures/starter1.jpg" alt="Spring Rolls">
+                </div>
+                <div class="dish-content">
+                    <h4>Spring Rolls</h4>
+                    <p>Crispy vegetable rolls served with sweet chili sauce.</p>
+                    <span class="price">$5.99</span>
+                    <button class="btn-add">Order Now</button>
+                </div>
+            </div>
+            <!-- Dish 2 -->
+            <div class="dish-card">
+                <div class="dish-img">
+                    <img src="pictures/fried rice.jpg" alt="Fried Rice with Chicken Manchurian">
+                </div>
+                <div class="dish-content">
+                    <h4>Fried Rice with Chicken Manchurian</h4>
+                    <p>Perfectly cooked fried rice with spicy chicken Manchurian.</p>
+                    <span class="price">$12.99</span>
+                    <button class="btn-add">Order Now</button>
+                </div>
+            </div>
+            <!-- Dish 3 -->
+            <div class="dish-card">
+                <div class="dish-img">
+                    <img src="pictures/desert.jpg" alt="Mango Pudding">
+                </div>
+                <div class="dish-content">
+                    <h4>Mango Pudding</h4>
+                    <p>Sweet mango pudding topped with fresh fruits.</p>
+                    <span class="price">$4.99</span>
+                    <button class="btn-add">Order Now</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us -->
+    <section id="about" class="about">
+        <div class="about-container">
+            <div class="about-text">
+                <h2>About Us</h2>
+                <p>Delicious Bites started with a passion for authentic flavors. Our chefs bring a perfect blend of tradition and innovation to every dish.</p>
+                <div class="values">
+                    <h3>Our Mission</h3>
+                    <ul>
+                        <li>🌿 Fresh, locally sourced ingredients</li>
+                        <li>🏡 Family-friendly dining experience</li>
+                        <li>🍽️ Unforgettable flavors in every dish</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="about-chef">
+                <div class="chef-card">
+                    <img src="pictures/chef1.webp" alt="Chef">
+                    <h3>Chef Rachael Ray</h3>
+                    <p>Expert in Chinese and Pan-Asian cuisine with 15+ years experience.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery -->
+    <section id="gallery" class="gallery">
+        <h2>Our Gallery</h2>
+        <div class="gallery-container">
+            <div class="gallery-item">
+                <img src="pictures/dish 1.jpg" alt="Dish 1">
+                <div class="overlay">Delicious Dish</div>
+            </div>
+            <div class="gallery-item">
+                <img src="pictures/dish 2.jpg" alt="Dish 2">
+                <div class="overlay">Special Meal</div>
+            </div>
+            <div class="gallery-item">
+                <img src="pictures/dish 3.jpg" alt="Interior">
+                <div class="overlay">Restaurant Interior</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reservation -->
+    <section id="reservations" class="reservations">
+        <div class="container">
+            <h2>🍽️ Reserve Your Table</h2>
+            <p class="subtitle">Book your dining experience with us</p>
+            <form class="reservation-form">
+                <div class="input-group">
+                    <input type="text" placeholder="Full Name" required>
+                    <input type="email" placeholder="Email Address" required>
+                </div>
+                <div class="input-group">
+                    <input type="tel" placeholder="Phone Number" required>
+                    <input type="number" placeholder="Guests" required>
+                </div>
+                <div class="input-group">
+                    <input type="date" required>
+                    <input type="time" required>
+                </div>
+                <textarea placeholder="Special Requests (Optional)"></textarea>
+                <button type="submit">Book Now</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Blog -->
+    <section id="blog" class="blog">
+        <div class="container">
+            <h2>🍜 Blog & Recipes</h2>
+            <p class="subtitle">Latest food tips & special offers</p>
+            <div class="blog-container">
+                <div class="blog-card">
+                    <img src="pictures/fried rice.webp" alt="Fried Rice">
+                    <div class="blog-content">
+                        <h3>5 Tips to Cook Perfect Fried Rice</h3>
+                        <p>Discover the secret to making restaurant-style fried rice at home...</p>
+                        <a href="#">Read More →</a>
+                    </div>
+                </div>
+                <div class="blog-card">
+                    <img src="pictures/chicken manchurian.webp" alt="Chicken Manchurian">
+                    <div class="blog-content">
+                        <h3>🔥 This Week’s Special: Chicken Manchurian Combo</h3>
+                        <p>Get 20% off on all combo meals this week. Limited time offer!</p>
+                        <a href="#">Order Now →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>📞 Contact Us</h2>
+            <p class="subtitle">We’d love to hear from you</p>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="info-box">
+                        <span>📍</span>
+                        <p>123 Food Street, Cityville</p>
+                    </div>
+                    <div class="info-box">
+                        <span>📞</span>
+                        <p>+1 234 567 890</p>
+                    </div>
+                    <div class="info-box">
+                        <span>✉️</span>
+                        <p>info@deliciousbites.com</p>
+                    </div>
+                    <div class="socials">
+                        <a href="#">🌐 Facebook</a>
+                        <a href="#">📸 Instagram</a>
+                    </div>
+                </div>
+                <div class="contact-map">
+                    <iframe src="https://maps.google.com/maps?q=cityville&t=&z=13&ie=UTF8&iwloc=&output=embed"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-box">
+                <h2>🍽️ Delicious Bites</h2>
+                <p>Serving delicious food with love. Experience the best taste in town.</p>
+            </div>
+            <div class="footer-box">
+                <h3>Quick Links</h3>
+                <a href="#menu">Menu</a>
+                <a href="#reservations">Reservations</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <div class="footer-box">
+                <h3>Newsletter</h3>
+                <p>Subscribe to get latest offers & updates</p>
+                <form class="newsletter">
+                    <input type="email" placeholder="Enter your email" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Delicious Bites. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Animated Background JS
+        const canvas = document.getElementById('bg-animation');
+        const ctx = canvas.getContext('2d');
+        let width = canvas.width = window.innerWidth;
+        let height = canvas.height = window.innerHeight;
+
+        window.addEventListener('resize', () => {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        });
+
+        const particles = [];
+        const particleCount = 100;
+        for(let i=0;i<particleCount;i++){
+            particles.push({
+                x: Math.random()*width,
+                y: Math.random()*height,
+                r: Math.random()*3+1,
+                dx: (Math.random()-0.5)*1,
+                dy: (Math.random()-0.5)*1,
+                color: `rgba(99,102,241,0.7)`
+            });
+        }
+
+        function animate(){
+            ctx.clearRect(0,0,width,height);
+            particles.forEach(p=>{
+                p.x += p.dx;
+                p.y += p.dy;
+                if(p.x<0||p.x>width)p.dx*=-1;
+                if(p.y<0||p.y>height)p.dy*=-1;
+                ctx.beginPath();
+                ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+                ctx.fillStyle = p.color;
+                ctx.fill();
+            });
+            requestAnimationFrame(animate);
+        }
+        animate();
+    </script>
+</body>
+</html>

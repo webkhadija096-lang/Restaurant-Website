@@ -1,0 +1,421 @@
+/* Reset & Base */
+* {margin:0; padding:0; box-sizing:border-box;}
+body {font-family: Arial, sans-serif; line-height:1.6; color:#E5E7EB; background:#0F172A;}
+a {text-decoration:none; color:#E5E7EB;}
+img {display:block;}
+#bg-animation {
+    position: fixed;       /* fixed rakhne se scroll ke sath move nahi hota */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;           /* sab content ke peeche */
+    pointer-events: none;  /* clicks pass through hon */
+    background: #0d1b4c;   /* dark base color, taake particles visible ho */
+}
+
+/* Navbar - Dark Luxury Theme with Animation + Background Image */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background: rgba(13,27,76,0.5); /* semi-transparent dark for overlay */
+    backdrop-filter: blur(5px);      /* thoda blur effect */
+    flex-wrap: wrap;
+    transition: background 0.5s ease;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    overflow: hidden; /* pseudo-element ke liye */
+}
+
+/* Navbar background image */
+nav::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0.5;  /* fade effect, adjust karo */
+    z-index: -1;   /* content ke neeche */
+}
+
+/* Hover gradient effect on navbar */
+nav:hover {
+    background: linear-gradient(90deg, #6366F1, #F59E0B);
+}
+
+/* Logo */
+nav .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #F59E0B;
+    transition: color 0.3s ease;
+    position: relative;
+    z-index: 10;
+}
+
+nav .logo:hover { color:#6366F1; }
+
+/* Menu */
+nav ul { display: flex; list-style: none; gap: 1rem; flex-wrap: wrap; }
+
+nav ul li a {
+    color: #E5E7EB;
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    position: relative;
+    background: #6366F1;
+    z-index: 10;
+}
+
+nav ul li a:hover {
+    background: #F59E0B;
+    color: #0F172A;
+    transform: translateY(-2px);
+}
+
+/* Animated underline on hover */
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0%;
+    height: 2px;
+    background: #F59E0B;
+    transition: 0.3s;
+}
+
+nav ul li a:hover::after { width: 100%; }
+
+/* Reserve Button */
+.btn-reserve {
+    background: #6366F1;
+    color: #E5E7EB;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.btn-reserve:hover {
+    background: #F59E0B;
+    color: #0F172A;
+    transform: scale(1.05);
+}
+
+@media(max-width:768px){
+    nav ul { flex-direction: column; width: 100%; }
+}
+
+/* Hero/Header Section with Background Image + Overlay Effect */
+.hero {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 80vh;
+    padding: 6rem 2rem;
+    color: #E5E7EB;
+    background: url('https://images.unsplash.com/photo-1600891964599-f61ba0e24092?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080') no-repeat center center;
+    background-size: cover;
+    background-attachment: fixed; /* parallax effect on scroll */
+    transition: background 0.5s ease;
+    overflow: hidden; /* particles overlay ke liye */
+}
+
+/* Optional overlay for dark effect */
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.4); /* adjust darkness */
+    z-index: 1;
+}
+
+/* Hero content on top of overlay */
+.hero .hero-content {
+    position: relative;
+    z-index: 2; /* text should be above overlay */
+}
+
+/* Example for adding particle canvas */
+#hero-particles {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1; /* overlay and particles behind content */
+    pointer-events: none; /* particles won’t block clicks */
+}
+.hero h1 { font-size:3rem; font-weight:bold; margin-bottom:1rem; color:#F59E0B; }
+.hero p { font-size:1.3rem; margin-bottom:2rem; color:#E5E7EB; }
+
+.hero-buttons {
+    display:flex; justify-content:center; gap:1.5rem; margin-bottom:2rem;
+}
+
+.hero-buttons .btn {
+    padding:0.8rem 2rem !important;
+    font-size:1.1rem !important;
+    font-weight:bold !important;
+    color:#E5E7EB !important;
+    background:#6366F1 !important;
+    border-radius:50px !important;
+    transition:all 0.3s ease !important;
+}
+
+.hero-buttons .btn:hover {
+    background:#F59E0B !important;
+    color:#0F172A !important;
+    transform:scale(1.05) !important;
+}
+
+/* Promo Banner */
+.promo-banner {
+    font-size:1.2rem !important;
+    font-weight:bold !important;
+    background: linear-gradient(90deg,#6366F1,#F59E0B) !important;
+    color:#E5E7EB !important;
+    padding:0.8rem 1.5rem !important;
+    border-radius:50px !important;
+    box-shadow:0 5px 15px rgba(0,0,0,0.3) !important;
+    animation:pulse 2s infinite !important;
+    margin-top:1rem !important;
+    display:inline-block !important;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+/* Menu Section */
+.menu {
+    padding: 4rem 2rem;
+    text-align: center;
+    /* background: linear-gradient(135deg, #0F172A, #6366F1); */
+}
+
+.menu h2 { font-size:2.5rem; margin-bottom:3rem; color:#F59E0B; }
+
+.menu-categories { display:flex; flex-wrap:wrap; justify-content:center; gap:2rem; }
+
+.dish-card {
+    width:300px; height:450px; background: linear-gradient(135deg,#6366F1,#0F172A);
+    border-radius:15px; overflow:hidden; box-shadow:0 5px 20px rgba(0,0,0,0.25);
+    transition:0.3s; display:flex; flex-direction:column; cursor:pointer;
+}
+
+.dish-card:hover { transform:translateY(-5px); box-shadow:0 10px 25px rgba(0,0,0,0.35); }
+
+.dish-img img { width:100%; height:200px; object-fit:cover; transition:0.3s; }
+.dish-card:hover img { transform:scale(1.1); }
+
+.dish-content { padding:1rem; flex:1; display:flex; flex-direction:column; justify-content:space-between; text-align:center; }
+.dish-content h4 { color:#F59E0B; font-size:1.4rem; margin-bottom:0.5rem; }
+.dish-content p { color:#E5E7EB; font-size:0.95rem; margin-bottom:0.8rem; }
+.price { color:#F59E0B; font-weight:bold; margin-bottom:0.8rem; font-size:1.1rem; }
+
+.btn-add { background:#6366F1; color:#E5E7EB; border:none; padding:0.6rem 1.2rem; border-radius:25px; font-weight:bold; transition:0.3s; }
+.btn-add:hover { background:#F59E0B; color:#0F172A; }
+
+@media(max-width:768px) { .menu-categories {flex-direction:column; align-items:center;} .dish-card {width:90%; height:auto;} }
+
+/* About Section */
+.about { padding:6rem 2rem;
+     /* background: linear-gradient(120deg,#0F172A,#6366F1); */
+      color:#E5E7EB; }
+
+.about-container { display:flex; justify-content:space-between; align-items:center; gap:3rem; flex-wrap:wrap; max-width:1200px; margin:auto; }
+
+.about-text { flex:1; }
+.about-text h2 { font-size:2.8rem; color:#F59E0B; margin-bottom:1.5rem; }
+.about-text p { font-size:1.2rem; color:#E5E7EB; margin-bottom:2rem; }
+.values h3 { color:#F59E0B; margin-bottom:1rem; }
+.values ul { list-style:disc; margin-left:2rem; font-size:1rem; color:#E5E7EB; }
+
+.about-chef { flex:1; display:flex; justify-content:center; }
+.chef-card { background: linear-gradient(135deg,#6366F1,#0F172A); padding:2rem; border-radius:20px; text-align:center; box-shadow:0 10px 25px rgba(0,0,0,0.25); transition:transform 0.3s, box-shadow 0.3s; display:flex; flex-direction:column; align-items:center; }
+.chef-card img { width:200px; height:200px; border-radius:50%; object-fit:cover; margin-bottom:1rem; transition:transform 0.3s; }
+.chef-card:hover { transform:translateY(-5px); box-shadow:0 15px 30px rgba(0,0,0,0.35); }
+.chef-card:hover img { transform:scale(1.05); }
+.chef-card h3 { margin-bottom:0.5rem; color:#F59E0B; }
+.chef-card p { font-size:1rem; color:#E5E7EB; }
+
+@media(max-width:768px){
+    .about-container { flex-direction:column; text-align:center; }
+    .about-chef { margin-top:2rem; }
+    .chef-card img { width:150px; height:150px; }
+}
+
+/* Reservations Section */
+.reservations { 
+    /* background: linear-gradient(135deg,#0F172A,#6366F1); */
+     padding:80px 20px; color:#E5E7EB; text-align:center; }
+
+.reservations h2 { font-size:36px; margin-bottom:10px; color:#F59E0B; }
+.subtitle { margin-bottom:30px; font-size:16px; color:#E5E7EB; }
+
+.reservation-form { max-width:600px; margin:auto; background:#0F172A; padding:30px; border-radius:12px; }
+.input-group { display:flex; gap:10px; margin-bottom:15px; }
+.input-group input { width:100%; }
+.reservation-form input, .reservation-form textarea { width:100%; padding:12px; border:none; border-radius:8px; outline:none; font-size:14px; background:#6366F1; color:#E5E7EB; }
+.reservation-form textarea { height:100px; margin-bottom:15px; resize:none; }
+.reservation-form button { width:100%; padding:14px; background:#6366F1; border:none; border-radius:8px; color:#E5E7EB; font-size:16px; cursor:pointer; transition:all 0.3s ease; }
+.reservation-form button:hover { background:#F59E0B; color:#0F172A; transform:scale(1.05); }
+
+/* Contact Section */
+.contact { padding:80px 20px; 
+    /* background: linear-gradient(135deg,#6366F1,#F59E0B); */
+     color:#E5E7EB; text-align:center; }
+.contact h2 { font-size:36px; margin-bottom:10px; color:#0F172A; }
+.contact .subtitle { color:#E5E7EB; margin-bottom:40px; }
+.contact-container { display:flex; gap:30px; max-width:1000px; margin:auto; flex-wrap:wrap; }
+.contact-info { flex:1; text-align:left; color:#E5E7EB; }
+.info-box { display:flex; align-items:center; gap:10px; background:#0F172A; padding:15px; margin-bottom:15px; border-radius:10px; transition:0.3s; color:#E5E7EB; }
+.info-box span { font-size:20px; }
+.info-box:hover { background:#F59E0B; color:#0F172A; transform:translateX(5px); }
+.socials { margin-top:20px; }
+.socials a { display:inline-block; margin-right:10px; padding:10px 15px; background:#0F172A; color:#E5E7EB; border-radius:8px; text-decoration:none; transition:0.3s; }
+.socials a:hover { background:#F59E0B; color:#0F172A; }
+.contact-map { flex:1; }
+.contact-map iframe { width:100%; height:100%; min-height:300px; border-radius:12px; border:none; }
+
+/* Gallery Section */
+.gallery { padding:5rem 2rem; 
+    /* background: linear-gradient(135deg,#0F172A,#6366F1); */
+     text-align:center; }
+.gallery h2 { font-size:2.5rem; color:#F59E0B; margin-bottom:2rem; }
+.gallery-container { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:1.5rem; max-width:1100px; margin:auto; }
+.gallery-item { position:relative; overflow:hidden; border-radius:15px; box-shadow:0 8px 20px rgba(0,0,0,0.3); cursor:pointer; background:#0F172A; }
+.gallery-item img { width:100%; height:250px; object-fit:cover; transition:transform 0.5s ease; }
+.gallery-item:hover img { transform:scale(1.1); }
+.overlay { position:absolute; bottom:0; left:0; width:100%; padding:1rem; background: rgba(15,23,42,0.8); color:#F59E0B; font-size:1.2rem; text-align:center; transform:translateY(100%); transition:transform 0.4s ease; }
+.gallery-item:hover .overlay { transform:translateY(0); }
+
+/* Blog Section */
+.blog { padding:80px 20px;
+     /* background: linear-gradient(135deg,#0F172A,#6366F1); */
+      text-align:center; }
+.blog h2 { font-size:36px; margin-bottom:10px; color:#F59E0B; }
+.blog .subtitle { color:#E5E7EB; margin-bottom:40px; }
+.blog-container { display:flex; gap:20px; justify-content:center; flex-wrap:wrap; }
+.blog-card { width:300px; background:#0F172A; border-radius:12px; overflow:hidden; box-shadow:0 4px 15px rgba(0,0,0,0.3); transition:0.3s; }
+.blog-card img { width:100%; height:200px; object-fit:cover; }
+.blog-content { padding:20px; text-align:left; color:#E5E7EB; }
+.blog-content h3 { font-size:18px; margin-bottom:10px; color:#F59E0B; }
+.blog-content p { font-size:14px; color:#E5E7EB; margin-bottom:15px; }
+.blog-content a { text-decoration:none; color:#F59E0B; font-weight:bold; transition:0.3s; }
+.blog-content a:hover { color:#E5E7EB; }
+.blog-card:hover { transform:translateY(-10px); box-shadow:0 10px 25px rgba(0,0,0,0.5); }
+
+/* Footer */
+.footer { 
+    /* background: linear-gradient(to right,#0F172A,#6366F1); */
+     color:#E5E7EB; padding:60px 20px 20px; }
+.footer-container { display:flex; justify-content:space-between; gap:30px; flex-wrap:wrap; max-width:1100px; margin:auto; }
+.footer-box { flex:1; min-width:250px; }
+.footer-box h2, .footer-box h3 { color:#F59E0B; margin-bottom:15px; }
+.footer-box p, .footer-box a { color:#E5E7EB; font-size:14px; margin-bottom:10px; display:block; text-decoration:none; }
+.footer-box a:hover { color:#F59E0B; }
+/* Footer Newsletter - Modern Attractive Style */
+.footer-box .newsletter {
+    margin-top: 15px;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 10px !important;
+    justify-content: flex-start !important;
+    align-items: center !important;
+}
+
+/* Input Field */
+.footer-box .newsletter input {
+    flex: 1 !important;
+    padding: 14px 20px !important;
+    border-radius: 50px !important; /* pill shape */
+    border: 2px solid #6366F1 !important; /* Indigo border */
+    background: #0F172A !important;       /* Dark Navy */
+    color: #E5E7EB !important;           /* Light text */
+    font-size: 14px !important;
+    outline: none !important;
+    transition: all 0.3s ease !important;
+}
+
+.footer-box .newsletter input::placeholder {
+    color: #9ca3af !important; /* soft grey placeholder */
+}
+
+.footer-box .newsletter input:focus {
+    border-color: #F59E0B !important; /* Gold glow */
+    box-shadow: 0 0 12px #F59E0B !important;
+    transform: scale(1.03) !important;
+}
+
+/* Subscribe Button */
+.footer-box .newsletter button {
+    padding: 14px 24px !important;
+    border: none !important;
+    border-radius: 50px !important;
+    background: linear-gradient(135deg, #6366F1, #818cf8) !important; /* Indigo gradient */
+    color: #0F172A !important;
+    font-weight: bold !important;
+    font-size: 14px !important;
+    cursor: pointer !important;
+    transition: all 0.4s ease !important;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3) !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+/* Hover Effect */
+.footer-box .newsletter button:hover {
+    background: linear-gradient(135deg, #F59E0B, #facc15) !important; /* Gold gradient */
+    color: #0F172A !important;
+    transform: scale(1.1) rotate(-1deg) !important;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.4) !important;
+}
+
+/* Shine Animation */
+.footer-box .newsletter button::after {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: rgba(255,255,255,0.15);
+    transform: rotate(45deg);
+    transition: all 0.5s ease;
+}
+
+.footer-box .newsletter button:hover::after {
+    top: 0;
+    left: 0;
+}
+
+/* Responsive */
+@media(max-width:768px){
+    .footer-box .newsletter {
+        flex-direction: column !important;
+        gap: 12px !important;
+        justify-content: center !important;
+    }
+    .footer-box .newsletter input,
+    .footer-box .newsletter button {
+        width: 90% !important;
+    }
+}
